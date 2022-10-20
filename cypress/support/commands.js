@@ -31,3 +31,12 @@ Cypress.Commands.add('login', (usuario, senha) => {
     cy.get('.woocommerce-form > .button').click()
 });
 
+Cypress.Commands.add('addProduto1', (nome, tamanho, cor, quantidade) =>{
+    get('[class="product-block grid"]').first(nome).click()
+        cy.get('.button-variable-item-XS').click(tamanho)
+        cy.get('.button-variable-item-Black').click(cor)
+        cy.get('.input-text').clear(quantidade)
+        cy.get('.single_add_to_cart_button').click()
+        cy.get('.dropdown-toggle > .mini-cart-items').should('contain', 1)
+})
+
